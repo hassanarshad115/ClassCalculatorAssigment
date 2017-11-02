@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ClassCalculatorAssigment
 {
-    public partial class Form2 : Form
+    public partial class Calculator1 : Form
     {
         /// <summary>
         /// Developer Hassan Arshad
@@ -25,7 +25,7 @@ namespace ClassCalculatorAssigment
         private string operation = "";
         private double result = 0.0;
 
-        public Form2()
+        public Calculator1()
         {
             InitializeComponent();
         }
@@ -45,22 +45,24 @@ namespace ClassCalculatorAssigment
             textBox1.Text  += "0";
         }
 
-        private void onebutton4_Click(object sender, EventArgs e)
-        {
-            RemoveZero(1);
-        }
-
+     
         /// <summary>
         /// 0 to 9 tk jtny b button ha usmy ye method add krna ha
         /// its code for all 0 to 9
         /// </summary>
         /// <param name="number"></param>
+        
         private void RemoveZero(int number)
         {
             if (textBox1.Text == "0")
                 textBox1.Text = number.ToString();
             else
                 textBox1.Text += number.ToString();
+        }
+
+        private void onebutton4_Click(object sender, EventArgs e)
+        {
+            RemoveZero(1);
         }
 
         private void twobutton_Click(object sender, EventArgs e)
@@ -98,10 +100,17 @@ namespace ClassCalculatorAssigment
             RemoveZero(9);
         }
 
+
         private void Cebutton_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox1.Text = "0";
+            //int n =textBox1.TextLength;
+            //textBox1.Text = (textBox1.Text.Substring(0, n - 1));
+
+            //agr left side sy b text strt kry to
+            //agr 0 sy zada s
+            if (textBox1.Text.Length > 0)
+                textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+            
         }
 
         /// <summary>
@@ -110,10 +119,11 @@ namespace ClassCalculatorAssigment
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
         private void dotbutton3_Click(object sender, EventArgs e)
         {
             if (!textBox1.Text.Contains(".")) // agr dot phly he include ha to ye again include ni kryga
-                textBox1.Text += ".";
+                textBox1.Text += ".";         //agr dot ni ha to ak bar just ayga br br ni
         }
 
 
@@ -160,7 +170,7 @@ namespace ClassCalculatorAssigment
         private void button1_Click(object sender, EventArgs e)
         {
             operation = "+";
-            FirstNumberKoValueJayOperationSyPhlyWali();
+            FirstNumberKoValueJayOperationSyPhlyWali();//phly wali value jay operaton k zrye first number ko
         }
 
 
@@ -171,6 +181,7 @@ namespace ClassCalculatorAssigment
             //all operaton ider perform horhy ha
             switch (operation)
             {
+
                 case "+":
                     result = firstNumber + secondNumber;
                     break;
@@ -180,7 +191,7 @@ namespace ClassCalculatorAssigment
                 case "*":
                     result = firstNumber * secondNumber;
                     break;
-                case "/":
+                case "/":                   
                     result = firstNumber / secondNumber;
                     break;
                 case "%":
@@ -195,6 +206,81 @@ namespace ClassCalculatorAssigment
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://allice9554.000webhostapp.com/");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox1.Text =Convert.ToString(System.Math.Sin(Convert.ToDouble(textBox1.Text)));
+        }
+
+       
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(System.Math.Cos(Convert.ToDouble(textBox1.Text)));
+        }
+
+        private void tanbutton_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(System.Math.Tan(Convert.ToDouble(textBox1.Text)));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(System.Math.Log(Convert.ToDouble(textBox1.Text)));
+
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(System.Math.Log10(Convert.ToDouble(textBox1.Text)));
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(System.Math.Sqrt(Convert.ToDouble(textBox1.Text)));
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(Convert.ToDouble(textBox1.Text) * Convert.ToDouble(textBox1.Text));
+        }
+
+        private void xKiPoWbutton_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(Convert.ToDouble(textBox1.Text) * Convert.ToDouble(textBox1.Text) * Convert.ToDouble(textBox1.Text));
+        }
+
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "3.141592654";
+        }
+
+        private void acbutton_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox1.Text = "0";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = Convert.ToString(- Convert.ToDouble(textBox1.Text));
+            // convert sy phly r tostring k bad - lgaya ha 
+            //ak br - show hoga r agr agian click krygy to gaieb hojayga
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
